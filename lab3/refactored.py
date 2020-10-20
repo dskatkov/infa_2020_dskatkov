@@ -7,6 +7,7 @@ pygame.init()
 
 FPS = 30
 
+
 def draw_picture(screen):
     '''
     Drawing the picture
@@ -23,12 +24,13 @@ def draw_picture(screen):
     for current_chukcha in chukchi_positions:
         chukchi(screen, 200, current_chukcha)
 
-    #Big igloo and big chukcha
+    # big igloo and big chukcha
     chukchi(screen, 400, (800, 300))
     igloo(screen, 200, (300, 400))
 
     for current_cat in small_cats_positions:
         cat(screen, 200, current_cat)
+
 
 def inclined_hand(surf, size, pos):
     '''
@@ -45,6 +47,7 @@ def inclined_hand(surf, size, pos):
     ellipse(surface, brown, (0, 0, int(0.05 * size), int(0.125 * size)), 0)
     surface2 = pygame.transform.rotate(surface, 45)
     surf.blit(surface2, (int(pos[0] + 0.18 * size), int(pos[1] + 0.37 * size)))
+
 
 def chukchi_body(surf, size, pos):
     '''
