@@ -146,8 +146,8 @@ class target():
         x = self.x = rnd(600, 780)
         y = self.y = rnd(300, 550)
         r = self.r = rnd(10, 50)
-        self.vx = rnd(-1, 2)
-        self.vy = 5 * rnd(-1, 2)
+        self.vx = 0 * rnd(-1, 2)
+        self.vy = 2 * rnd(-1, 2)
         color = self.color = 'red'
         canv.coords(self.id, x-r, y-r, x+r, y+r)
         canv.itemconfig(self.id, fill=color)
@@ -158,14 +158,12 @@ class target():
         self.points += points
 
     def move(self):
-        """Переместить мяч по прошествии единицы времени.
+        """Перемещает цель
 
-                Метод описывает перемещение мяча за один кадр перерисовки. То есть, обновляет значения
-                self.x и self.y с учетом скоростей self.vx и self.vy, силы гравитации, действующей на мяч,
-                и стен по краям окна (размер окна 800х600).
+            На вход подаётся объект класса target и его координаты меняются в соответствии с собственными параметрами скорости.
                 """
         self.x += self.vx
-        self.y+=self.vy
+        self.y += self.vy
         if self.x >= 800 - self.r:
             self.vx *= -1
         elif self.x <= self.r:
