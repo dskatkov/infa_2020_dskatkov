@@ -146,8 +146,8 @@ class target():
         x = self.x = rnd(600, 780)
         y = self.y = rnd(300, 550)
         r = self.r = rnd(10, 50)
-        self.vx = 0 * rnd(-1, 2)
-        self.vy = 2 * rnd(-1, 2)
+        self.vx = 0
+        self.vy = rnd(-2, 3)
         color = self.color = 'red'
         canv.coords(self.id, x-r, y-r, x+r, y+r)
         canv.itemconfig(self.id, fill=color)
@@ -206,12 +206,12 @@ def new_game(event=''):
 
     z = 0.03
     while True:
+        for tar in targets:
+            if tar.live:
+                tar.move()
         for b in balls:
             if not b.r==0:
                 b.move()
-            for tar in targets:
-                if tar.live:
-                    tar.move()
 
             for tar in targets:
                 if b.hittest(tar) and tar.live:
