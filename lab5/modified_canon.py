@@ -84,7 +84,6 @@ class ball():
         else:
             return False
 
-
 class gun():
     def __init__(self, power=10, on=0, an=1):
         self.f2_power = power
@@ -108,6 +107,7 @@ class gun():
         self.an = math.atan((event.y-new_ball.y) / (event.x-new_ball.x))
         new_ball.vx = self.f2_power * math.cos(self.an)
         new_ball.vy = - self.f2_power * math.sin(self.an)
+        new_ball.r *= 20/new_ball.vx
         balls += [new_ball]
         self.f2_on = 0
         self.f2_power = 10
@@ -132,7 +132,6 @@ class gun():
             canv.itemconfig(self.id, fill='orange')
         else:
             canv.itemconfig(self.id, fill='black')
-
 
 class target():
     def __init__(self):
